@@ -333,10 +333,10 @@ function my_custom_admin_css_inline() {
 		width: 100%;
 	}
 
-	.wrap form .form-table tr td input,
-	.wrap form .form-table tr td textarea {
-		width: 100%;
-	}
+		#wpbody .wrap form .form-table tr td input,
+		#wpbody .wrap form .form-table tr td textarea {
+	 	width: 100%;
+	 }
 
 	.wrap form>h2 {
 		font-size: 14px;
@@ -354,7 +354,7 @@ function my_custom_admin_css_inline() {
 		padding: 12px;
 	}
 
-	.wrap .submit {
+	#wpbody .wrap .submit {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -369,3 +369,222 @@ function my_custom_admin_css_inline() {
 }
 
 add_action('admin_head', 'my_custom_admin_css_inline');
+
+
+function theme_settings_page() {
+    ?>
+    <div class="wrap">
+        <h1>Theme Options</h1>
+        <h2 class="nav-tab-wrapper">
+            <a href="" class="nav-tab nav-tab-active" data-tab="tab1">Options</a>
+            <a href="" class="nav-tab" data-tab="tab2">Footer</a>
+        </h2>
+        <form method="post" action="options.php">
+            <?php
+                settings_fields("section");
+                do_settings_sections("theme-options");
+                submit_button();
+            ?>
+            <div id="tab1-content" class="tab-content active">
+                <?php do_settings_sections("tab1-options"); ?>
+            </div>
+            <div id="tab2-content" class="tab-content">
+                <?php do_settings_sections("tab2-options"); ?>
+            </div>
+        </form>
+    </div>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    tabs.forEach(t => t.classList.remove('nav-tab-active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    tab.classList.add('nav-tab-active');
+                    document.querySelector(`#${tab.dataset.tab}-content`).classList.add('active');
+                });
+            });
+        });
+    </script>
+    <?php
+}
+
+function add_theme_menu_item() {
+    add_menu_page("Theme Options", "Theme Options", "manage_options", "theme-panel", "theme_settings_page", null, 99);
+}
+add_action("admin_menu", "add_theme_menu_item");
+
+function display_heading_field() {
+    ?>
+    <input type="text" name="theme_heading" value="<?php echo esc_attr(get_option('theme_heading')); ?>" />
+    <?php
+}
+
+function display_header_description_field() {
+    ?>
+    <textarea rows="8" name="theme_header_description"><?php echo esc_attr(get_option('theme_header_description')); ?></textarea>
+    <?php
+}
+
+function display_description_field() {
+    ?>
+    <textarea rows="8" name="theme_description"><?php echo esc_attr(get_option('theme_description')); ?></textarea>
+    <?php
+}
+
+function display_heading_footer_field() {
+    ?>
+    <input type="text" name="theme_heading_footer" value="<?php echo esc_attr(get_option('theme_heading_footer')); ?>" />
+    <?php
+}
+
+function display_instagram_link_field() {
+    ?>
+    <input type="url" name="theme_instagram_link" id="theme_instagram_link" value="<?php echo esc_url(get_option('theme_instagram_link', 'https://instagram.com/')); ?>" placeholder="Enter Instagram URL" />
+    <?php
+}
+function display_facebook_link_field() {
+    ?>
+    <input type="url" name="theme_facebook_link" id="theme_facebook_link" value="<?php echo esc_url(get_option('theme_facebook_link', 'https://facebook.com/')); ?>" placeholder="Enter Facebook URL" />
+    <?php
+}
+function display_twitter_link_field() {
+    ?>
+    <input type="url" name="theme_twitter_link" id="theme_twitter_link" value="<?php echo esc_url(get_option('theme_twitter_link', 'https://twitter.com/')); ?>" placeholder="Enter Twitter URL" />
+    <?php
+}
+function display_skype_link_field() {
+    ?>
+    <input type="url" name="theme_skype_link" id="theme_skype_link" value="<?php echo esc_url(get_option('theme_skype_link', 'https://skype.com/')); ?>" placeholder="Enter Skype URL" />
+    <?php
+}
+function display_linkedin_link_field() {
+    ?>
+    <input type="url" name="theme_linkedin_link" id="theme_linkedin_link" value="<?php echo esc_url(get_option('theme_linkedin_link', 'https://linkedin.com/')); ?>" placeholder="Enter Linkedin URL" />
+    <?php
+}
+function display_copyright_text_field() {
+    ?>
+    
+	<textarea rows="8" name="theme_copyright_text"><?php echo esc_attr(get_option('theme_copyright_text')); ?></textarea>
+    <?php
+}
+
+function display_media_upload_button() {
+    $image_url = get_option('image-1');
+    ?>
+    <div id="media-upload-wrapper">
+        <div id="image-preview" style="margin-top: 10px;">
+            <?php if ($image_url): ?>
+                <img src="<?php echo esc_url($image_url); ?>" alt="Selected Image" width="380" />
+            <?php endif; ?>
+        </div>
+        <button type="button" class="button" id="upload-image-1">Select Image</button>
+        <button type="button" class="button" id="remove-image" style="display: <?php echo $image_url ? 'inline-block' : 'none'; ?>;">Remove Image</button>
+        <input type="hidden" id="image-1" name="image-1" value="<?php echo esc_url($image_url); ?>" />
+    </div>
+    <?php
+}
+
+function display_theme_panel_fields() {
+    add_settings_section("section", "Theme Option", null, "theme-options");
+
+    // Tab 1 Fields
+    add_settings_section("tab1", null, null, "tab1-options");
+    add_settings_field("theme_heading", "Heading", "display_heading_field", "tab1-options", "tab1");
+    add_settings_field("theme_header_description", "Description", "display_header_description_field", "tab1-options", "tab1");
+    add_settings_field("image-1", "Image", "display_media_upload_button", "tab1-options", "tab1");
+
+    // Tab 2 Fields
+    add_settings_section("tab2", null, null, "tab2-options");
+    add_settings_field("theme_heading_footer", "Logo", "display_heading_footer_field", "tab2-options", "tab2");
+    add_settings_field("theme_description", "Footer Description", "display_description_field", "tab2-options", "tab2");
+    add_settings_field("theme_instagram_link", "Instagram Link", "display_instagram_link_field", "tab2-options", "tab2");
+    add_settings_field("theme_facebook_link", "Facebook Link", "display_facebook_link_field", "tab2-options", "tab2");
+    add_settings_field("theme_twitter_link", "Twitter Link", "display_twitter_link_field", "tab2-options", "tab2");
+    add_settings_field("theme_skype_link", "Skype Link", "display_skype_link_field", "tab2-options", "tab2");
+    add_settings_field("theme_linkedin_link", "Linkedin Link", "display_linkedin_link_field", "tab2-options", "tab2");
+    add_settings_field("theme_copyright_text", "Copyright Text", "display_copyright_text_field", "tab2-options", "tab2");
+
+    // Register Settings
+    register_setting("section", "theme_heading");
+    register_setting("section", "image-1");
+    register_setting("section", "theme_header_description");
+    register_setting("section", "theme_heading_footer");
+    register_setting("section", "theme_description");
+    register_setting("section", "theme_instagram_link");
+    register_setting("section", "theme_facebook_link");
+    register_setting("section", "theme_twitter_link");
+    register_setting("section", "theme_skype_link");
+    register_setting("section", "theme_linkedin_link");
+    register_setting("section", "theme_copyright_text");
+}
+add_action("admin_init", "display_theme_panel_fields");
+
+function enqueue_media_uploader_scripts($hook) {
+    if ($hook !== 'toplevel_page_theme-panel') {
+        return;
+    }
+    wp_enqueue_media();
+}
+add_action('admin_enqueue_scripts', 'enqueue_media_uploader_scripts');
+
+function custom_media_uploader_script() {
+    ?>
+    <script>
+        jQuery(document).ready(function ($) {
+            const setupMediaUploader = (buttonId, inputId, previewId, removeButtonId, title, buttonText) => {
+                let mediaUploader;
+
+                $(buttonId).click(function (e) {
+                    e.preventDefault();
+
+                    if (mediaUploader) {
+                        mediaUploader.open();
+                        return;
+                    }
+
+                    mediaUploader = wp.media({
+                        title: title,
+                        button: { text: buttonText },
+                        multiple: false,
+                        library: { type: 'image' },
+                    });
+
+                    mediaUploader.on('select', function () {
+                        const attachment = mediaUploader.state().get('selection').first().toJSON();
+
+                        if (attachment.type !== 'image') {
+                            alert('Please select an image file.');
+                            return;
+                        }
+
+                        $(inputId).val(attachment.url);
+                        $(previewId).html(`<img src="${attachment.url}" alt="Selected Image" width="100" />`);
+                        $(removeButtonId).show();
+                    });
+
+                    mediaUploader.open();
+                });
+
+                $(removeButtonId).click(function () {
+                    $(inputId).val('');
+                    $(previewId).html('');
+                    $(this).hide();
+                });
+            };
+			
+            setupMediaUploader('#upload-image-1', '#image-1', '#image-preview', '#remove-image', 'Header Image', 'Use this Image');            
+        });
+    </script>
+    <?php
+}
+add_action('admin_footer', 'custom_media_uploader_script');

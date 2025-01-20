@@ -13,18 +13,63 @@
 
 <footer id="footer" class="footer dark-background">
     <div class="container">
-      <h3 class="sitename">Selecao</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+    <h3 class="sitename">
+        <?php 
+          if (!empty(get_option('theme_heading_footer'))) {
+              echo esc_html(get_option('theme_heading_footer'));
+          } 
+          ?>
+      </h3>
+      <p>
+          <?php 
+          if (!empty(get_option('theme_description'))) {
+              echo esc_html(get_option('theme_description'));
+          } 
+          ?>
+      </p>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+          <?php if (!empty(get_option('theme_twitter_link'))): ?>
+              <a href="<?php echo esc_url(get_option('theme_twitter_link')); ?>" target="_blank">
+                  <i class="bi bi-twitter"></i>
+              </a>
+          <?php endif; ?>
+
+          <?php if (!empty(get_option('theme_facebook_link'))): ?>
+              <a href="<?php echo esc_url(get_option('theme_facebook_link')); ?>" target="_blank">
+                  <i class="bi bi-facebook"></i>
+              </a>
+          <?php endif; ?>
+
+          <?php if (!empty(get_option('theme_instagram_link'))): ?>
+              <a href="<?php echo esc_url(get_option('theme_instagram_link')); ?>" target="_blank">
+                  <i class="bi bi-instagram"></i>
+              </a>
+          <?php endif; ?>
+
+          <?php if (!empty(get_option('theme_skype_link'))): ?>
+              <a href="<?php echo esc_url(get_option('theme_skype_link')); ?>" target="_blank">
+                  <i class="bi bi-skype"></i>
+              </a>
+          <?php endif; ?>
+
+          <?php if (!empty(get_option('theme_linkedin_link'))): ?>
+              <a href="<?php echo esc_url(get_option('theme_linkedin_link')); ?>" target="_blank">
+                  <i class="bi bi-linkedin"></i>
+              </a>
+          <?php endif; ?>
       </div>
+
       <div class="container">
         <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Selecao</strong> <span>All Rights Reserved</span>
+
+          
+
+        <?php 
+          if (!empty(get_option('theme_heading_footer'))) {
+              echo esc_html(get_option('theme_heading_footer'));
+          } 
+          ?>
+  
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
