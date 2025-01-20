@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "custom/hero-home-block",
+  "title": "Hero Home Block",
+  "category": "text",
+  "icon": "menu",
+  "description": "A  Block with a heading, description",
+  "supports": {
+    "align": [
+      "full",
+      "wide"
+    ]
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "source": "html",
+      "selector": "h4"
+    },
+    "description": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}
