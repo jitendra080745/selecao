@@ -10,4 +10,5 @@
  */
 
 import './src/about-us-block/index.js';
+import './src/full-width-cta-block/index.js';
 import './src/hero-home-block/index.js';
