@@ -34,3 +34,9 @@
 /wp-content/themes/index.php
 /wp-content/plugins/index.php
 /wp-content/plugins/akismet*
+
+/wp-content/themes/selecao/node_modules
+/wp-content/themes/selecao/package
+/wp-content/themes/selecao/package.json
+/wp-content/themes/selecao/build
+/wp-content/themes/selecao/src
