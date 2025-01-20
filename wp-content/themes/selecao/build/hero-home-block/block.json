@@ -19,10 +19,6 @@
       "items": {
         "type": "object",
         "properties": {
-          "heading": {
-            "type": "string",
-            "default": ""
-          },
           "title": {
             "type": "string",
             "default": ""

@@ -24,55 +24,54 @@ export default function Edit({ attributes, setAttributes }) {
 
     return (
         <div {...useBlockProps()}>
-            <h2
-                onClick={() => setCallupOpen(!isCallupOpen)}
-                style={{ cursor: 'pointer', color: isCallupOpen ? 'black' : 'black' }}
-            >
-                {__('Home Hero Block', 'hero-home-block')}
-            </h2>
+            <h2 onClick={() => setCallupOpen(!isCallupOpen)}  class="block-title show"  style={{ cursor: 'pointer', color: isCallupOpen ? 'black' : 'black' }}
+            > {__('Home Hero Block', 'hero-home-block')} </h2>
+            {/* <h2 onClick={toggleCollapse} className={`block-title ${isCollapsed ? '' : 'show'}`}>{__('About Us Block', 'about-us-block')}
+
+            class="block-title show" */}
 
             {isCallupOpen && (
             <div className="cta-fields">
-                <PanelBody title={__('Repeater Items', 'about-block')} initialOpen={true}>
+                <PanelBody title={__('Repeater Items', 'hero-home-block')} initialOpen={true}>
                     {repeater.map((item, index) => (
                         <PanelRow key={index}>
                             <div>
+                                <h6>{__('Title', 'hero-home-block')}</h6>
                                 <TextControl
-                                    label={__('Title', 'about-block')}
                                     value={item.title}
                                     onChange={(value) => updateRepeaterItem(index, 'title', value)}
-                                    placeholder={__('Enter item title...', 'about-block')}
+                                    placeholder={__('Enter item title...', 'hero-home-block')}
                                 />
+                                <h6>{__('Description', 'hero-home-block')}</h6>
                                 <TextControl
-                                    label={__('Description', 'about-block')}
                                     value={item.description}
                                     onChange={(value) => updateRepeaterItem(index, 'description', value)}
-                                    placeholder={__('Enter item description...', 'about-block')}
+                                    placeholder={__('Enter item description...', 'hero-home-block')}
                                 />
+                                <h6>{__('Button Text', 'hero-home-block')}</h6>
                                     <TextControl
-                                        label={__('Button Text', 'about-block')}
                                         value={item.buttonText}
                                         onChange={(value) => updateRepeaterItem(index, 'buttonText',  value )}
-                                        placeholder={__('Enter button text...', 'about-block')}
+                                        placeholder={__('Enter button text...', 'hero-home-block')}
                                     />
+                                     <h6>{__('Button URL', 'hero-home-block')}</h6>
                                     <TextControl
-                                        label={__('Button URL', 'about-block')}
                                         value={item.buttonUrl}
                                         onChange={(value) => updateRepeaterItem(index, 'buttonUrl',  value)}
-                                        placeholder={__('Enter button URL...', 'about-block')}
+                                        placeholder={__('Enter button URL...', 'hero-home-block')}
                                     />
                                 <Button
                                     onClick={() => removeRepeaterItem(index)}
                                     isDestructive
                                     style={{ marginTop: '10px' }}
                                 >
-                                    {__('Remove Item', 'about-block')}
+                                    {__('Remove Item', 'hero-home-block')}
                                 </Button>
                             </div>
                         </PanelRow>
                     ))}
                     <Button onClick={addRepeaterItem} isPrimary style={{ marginTop: '10px' }}>
-                        {__('Add Item', 'about-block')}
+                        {__('Add Item', 'hero-home-block')}
                     </Button>
                 </PanelBody>
             </div> 
