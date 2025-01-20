@@ -3,8 +3,8 @@
   "apiVersion": 2,
   "name": "custom-blocks/about-us-block",
   "title": "About Us Block",
-  "category": "text",
-  "icon": "menu",
+  "category": "custom-blocks",
+  "icon": "universal-access",
   "description": "A custom block with title, heading, description, link button, and a repeater field.",
   "supports": {
     "align": [
