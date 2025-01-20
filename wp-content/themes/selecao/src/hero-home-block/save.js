@@ -6,8 +6,9 @@ import { useBlockProps} from '@wordpress/block-editor';
         <div {...useBlockProps.save()}>
             <section id="hero" class="hero section dark-background">
                 <div id="hero-carousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-                        {repeater.length > 0 && repeater.map((item, index) => (
                     <div class="carousel-item active">
+                        {repeater.length > 0 &&
+                            repeater.map((item, index) => (
                             <div class="carousel-container" key={index} className="col-md-6" data-aos="fade-up" data-aos-delay={`${200 + index * 100}`}>
                                 {item.title && <h2 class="animate__animated animate__fadeInDown"> {item.title}</h2>}
                                 {item.description && <p class="animate__animated animate__fadeInUp">{item.description}</p>}
@@ -15,8 +16,8 @@ import { useBlockProps} from '@wordpress/block-editor';
                                     {item.buttonText || 'Click Here'}
                                 </a>
                             </div>
-                    </div>
                         ))}
+                    </div>
                     <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
                     </a>
@@ -39,7 +40,9 @@ import { useBlockProps} from '@wordpress/block-editor';
                         <use xlink:href="#wave-path" x="50" y="9"></use>
                     </g>
                 </svg> */}
+
             </section>
+                
         </div>
     );
 }
