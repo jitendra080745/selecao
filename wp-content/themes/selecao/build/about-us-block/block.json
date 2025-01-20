@@ -25,6 +25,10 @@
       "type": "string",
       "default": ""
     },
+    "descriptionright": {
+      "type": "string",
+      "default": ""
+    },
     "buttonText": {
       "type": "string",
       "default": "Learn More"
@@ -39,15 +43,7 @@
       "items": {
         "type": "object",
         "properties": {
-          "image": {
-            "type": "string",
-            "default": ""
-          },
           "title": {
-            "type": "string",
-            "default": ""
-          },
-          "description": {
             "type": "string",
             "default": ""
           }
