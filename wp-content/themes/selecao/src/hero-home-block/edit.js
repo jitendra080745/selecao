@@ -1,33 +1,77 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps ,URLInput, RichText , MediaUpload} from '@wordpress/block-editor';
-import { TextControl } from '@wordpress/components';
+import { Button, PanelBody, PanelRow, TextControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
-    const { heading, description, } = attributes;
-    const onChangeHeading = (newHeading) => setAttributes({ heading: newHeading });
-    const onChangeDescription = (newDescription) => setAttributes({ description: newDescription });
+    const {buttonUrl, buttonText, repeater, } = attributes;
+
+    
+    const addRepeaterItem = () => {
+        const newRepeater = [...repeater, { image: '', title: '', description: '' }];
+        setAttributes({ repeater: newRepeater });
+    };
+
+    const updateRepeaterItem = (index, field, value) => {
+        const newRepeater = [...repeater];
+        newRepeater[index][field] = value;
+        setAttributes({ repeater: newRepeater });
+    };
+
+    const removeRepeaterItem = (index) => {
+        const newRepeater = repeater.filter((_, i) => i !== index);
+        setAttributes({ repeater: newRepeater });
+    };
+
 
     return (
         <div {...useBlockProps()}>
-           
                 <div className="cta-fields">
-                  
-                    <TextControl
-                        tagName="h4"
-                        label={__('Heading', 'hero-home-block')}
-                        value={heading}
-                        onChange={onChangeHeading}
-                        placeholder={__('Add Heading', 'hero-home-block')}
-                    />
-                    <TextControl
-                        tagName="p"
-                        label={__('Description', 'hero-home-block')}
-                        value={description}
-                        onChange={onChangeDescription}
-                        placeholder={__('Add Description', 'hero-home-block')}
-                    />
+                    
+                     <PanelBody title={__('Repeater Items', 'about-block')} initialOpen={true}>
+                        {repeater.map((item, index) => (
+                            <PanelRow key={index}>
+                                <div>
+                                    <TextControl
+                                        label={__('Title', 'about-block')}
+                                        value={item.title}
+                                        onChange={(value) => updateRepeaterItem(index, 'title', value)}
+                                        placeholder={__('Enter item title...', 'about-block')}
+                                    />
+                                    <TextControl
+                                        label={__('Description', 'about-block')}
+                                        value={item.description}
+                                        onChange={(value) => updateRepeaterItem(index, 'description', value)}
+                                        placeholder={__('Enter item description...', 'about-block')}
+                                    />
+                                     <TextControl
+                                            label={__('Button Text', 'about-block')}
+                                            value={item.buttonText}
+                                            onChange={(value) => updateRepeaterItem(index, 'buttonText',  value )}
+                                            placeholder={__('Enter button text...', 'about-block')}
+                                        />
+                                        <TextControl
+                                            label={__('Button URL', 'about-block')}
+                                            value={item.buttonUrl}
+                                            onChange={(value) => updateRepeaterItem(index, 'buttonUrl',  value)}
+                                            placeholder={__('Enter button URL...', 'about-block')}
+                                        />
+                                    <Button
+                                        onClick={() => removeRepeaterItem(index)}
+                                        isDestructive
+                                        style={{ marginTop: '10px' }}
+                                    >
+                                        {__('Remove Item', 'about-block')}
+                                    </Button>
+                                </div>
+                            </PanelRow>
+                        ))}
+                        <Button onClick={addRepeaterItem} isPrimary style={{ marginTop: '10px' }}>
+                            {__('Add Item', 'about-block')}
+                        </Button>
+                    </PanelBody>
+
                    
                 </div>    
         </div>
