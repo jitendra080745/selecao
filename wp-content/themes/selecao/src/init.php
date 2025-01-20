@@ -21,6 +21,7 @@ function create_multiple_blocks_plugin_block_init()
     register_block_type(get_template_directory() . '/build/about-us-block/');
     register_block_type(get_template_directory() . '/build/full-width-cta-block/');
     register_block_type(get_template_directory() . '/build/hero-home-block/');
+    register_block_type(get_template_directory() . '/build/services-block/');
 
 
 }
@@ -142,3 +143,13 @@ function register_hero_home_block() {
     );
 }
 add_action('init', 'register_hero_home_block');
+
+function register_services_block() {
+    register_block_type(
+        get_template_directory() . '/src/services-block',
+        array(
+            'render_callback' => 'render_services_block',
+        )
+    );
+}
+add_action('init', 'register_services_block');
