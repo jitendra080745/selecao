@@ -1,5 +1,4 @@
 import { useBlockProps} from '@wordpress/block-editor';
-
     export default function save({ attributes }) {
         const {title,heading, repeater} = attributes;
     return (
@@ -19,13 +18,12 @@ import { useBlockProps} from '@wordpress/block-editor';
                                     </div>
                                     <a href="service-details.html" class="stretched-link">  {item.title && <h3>{item.title}</h3>} </a>
                                     {item.description && <p>{item.description}</p>}
-                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
-
         </div>
     );
 }
