@@ -17,6 +17,7 @@ import { useBlockProps} from '@wordpress/block-editor';
                                 <div class="swiper-slide">
                                     <div class="testimonial-item">
                                             {item.image && <img src={item.image} alt="" data-aos="fade-in"/>}
+                                            
                                             {item.title && <h3>{item.title}</h3>}
                                             {item.subtitle && <h4>{item.subtitle}</h4>}
                                         <div class="stars">

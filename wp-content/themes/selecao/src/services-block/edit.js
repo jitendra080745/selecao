@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps ,URLInput, RichText , MediaUpload} from '@wordpress/block-editor';
+import { useBlockProps ,URLInput, RichText , MediaUpload, MediaUploadCheck} from '@wordpress/block-editor';
 import { Button, PanelBody, PanelRow, TextControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import './editor.scss';
@@ -48,16 +48,33 @@ export default function Edit({ attributes, setAttributes }) {
                     {repeater.map((item, index) => (
                         <PanelRow key={index}>
                             <div>
-                                <MediaUpload
-                                        onSelect={(media) => updateRepeaterItem(index, 'image', media.url)}
-                                        allowedTypes={['image']}
-                                        render={({ open }) => (
-                                            <Button onClick={open} isSecondary>
-                                                {__('Select Image', 'services-block')}
-                                            </Button>
+                                <h6>{__('Image', 'services-block')}</h6>
+                                <MediaUploadCheck>
+                                    <div className="image-upload-section">
+                                        {!item.image ? (
+                                            <MediaUpload
+                                                onSelect={(media) =>    (index, 'image', media.url)}
+                                                allowedTypes={['image']}
+                                                value={item.image}
+                                                render={({ open }) => (
+                                                    <Button onClick={open} isSecondary>
+                                                        {__('Select Image', 'services-block')}
+                                                    </Button>
+                                                )}
+                                            />
+                                        ) : (
+                                            <div className="image-wrapper">
+                                                <img src={item.image} alt={__('Selected Image', 'services-block')} />
+                                                <Button
+                                                    onClick={() => updateRepeaterItem(index, 'image', '')}
+                                                    isDestructive
+                                                >
+                                                    {__('Remove Image', 'services-block')}
+                                                </Button>
+                                            </div>
                                         )}
-                                    />
-                                    {item.image && <img src={item.image} alt="" style={{ maxWidth: '100%' }} />}
+                                    </div>
+                                </MediaUploadCheck>
                                 <h6>{__('Title', 'services-block')}</h6>
                                 <TextControl
                                     value={item.title}
@@ -70,7 +87,6 @@ export default function Edit({ attributes, setAttributes }) {
                                     onChange={(value) => updateRepeaterItem(index, 'description', value)}
                                     placeholder={__('Enter item description...', 'services-block')}
                                 />
-                               
                                 <Button
                                     onClick={() => removeRepeaterItem(index)}
                                     isDestructive
