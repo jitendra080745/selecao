@@ -22,6 +22,7 @@ function create_multiple_blocks_plugin_block_init()
     register_block_type(get_template_directory() . '/build/full-width-cta-block/');
     register_block_type(get_template_directory() . '/build/hero-home-block/');
     register_block_type(get_template_directory() . '/build/services-block/');
+    register_block_type(get_template_directory() . '/build/accordion-block/');
 
 
 }
@@ -153,3 +154,13 @@ function register_services_block() {
     );
 }
 add_action('init', 'register_services_block');
+
+function register_accordion_block() {
+    register_block_type(
+        get_template_directory() . '/src/accordion-block',
+        array(
+            'render_callback' => 'render_accordion_block',
+        )
+    );
+}
+add_action('init', 'register_accordion_block');
