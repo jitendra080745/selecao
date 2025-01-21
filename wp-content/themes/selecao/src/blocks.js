@@ -17,3 +17,5 @@ import './src/testimonial-bock/index.js';
 import './src/accordion-block/index.js';
 import './src/pricing-block/index.js';
 import './src/contact-block/index.js';
+import './src/teams-block/index.js';
+import './src/post-list-block/index.js';

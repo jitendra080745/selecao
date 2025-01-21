@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "custom-blocks/post-list-block",
+  "title": "Post List Block",
+  "category": "custom-blocks",
+  "icon": "editor-ol",
+  "description": "Post List Block",
+  "supports": {
+    "align": [
+      "full",
+      "wide"
+    ]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2"
+    },
+    "heading": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    },
+    "selectedCategory": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedTag": {
+      "type": "string",
+      "default": ""
+    },
+    "posts": {
+      "type": "array",
+      "default": []
+    },
+    "currentPage": {
+      "type": "number",
+      "default": 1
+    },
+    "totalPages": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "textdomain": "custom-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.scss",
+  "style": "file:./style.scss"
+}
