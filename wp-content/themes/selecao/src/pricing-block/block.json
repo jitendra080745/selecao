@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "custom-blocks/pricing-block",
+    "title": "Pricing Block",
+    "category": "custom-blocks",
+    "icon": "index-card",
+    "description": "A Pricing Block ",
+    "supports": {
+        "align": ["full", "wide"]
+    },
+    "attributes": { 
+        "title": {
+              "type": "string",
+              "source": "html",
+              "selector": "p"
+          },       
+          "heading": {
+              "type": "string",
+              "source": "html",
+              "selector": "h2"
+          },   
+          "repeater": {
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "properties": {
+                "title": { "type": "string", "default": "" },
+                "number": { "type": "number", "default": "" },
+                "month": { "type": "string", "default": "" },
+                "buttonText": { "type": "string", "default": "Click Here"  },
+                "buttonUrl": {  "type": "string", "default": "#" },
+                "repeater": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "subtitle": { "type": "string", "default": "" }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css"
+}

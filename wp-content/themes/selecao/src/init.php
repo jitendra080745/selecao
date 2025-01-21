@@ -24,6 +24,7 @@ function create_multiple_blocks_plugin_block_init()
     register_block_type(get_template_directory() . '/build/services-block/');
     register_block_type(get_template_directory() . '/build/testimonial-block/');
     register_block_type(get_template_directory() . '/build/accordion-block/');
+    register_block_type(get_template_directory() . '/build/pricing-block/');
     register_block_type(get_template_directory() . '/build/contact-block/');
     
 }
@@ -175,6 +176,17 @@ function register_accordion_block() {
     );
 }
 add_action('init', 'register_accordion_block');
+
+
+function register_pricing_block() {
+    register_block_type(
+        get_template_directory() . '/src/pricing-block',
+        array(
+            'render_callback' => 'render_pricing_block',
+        )
+    );
+}
+add_action('init', 'register_pricing_block');
 
 function register_contact_block() {
     register_block_type(

@@ -15,4 +15,5 @@ import './src/hero-home-block/index.js';
 import './src/services-block/index.js';
 import './src/testimonial-bock/index.js';
 import './src/accordion-block/index.js';
+import './src/pricing-block/index.js';
 import './src/contact-block/index.js';
