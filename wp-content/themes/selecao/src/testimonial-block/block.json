@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "custom-blocks/testimonial-block",
+    "title": "Testimonial Block",
+    "category": "custom-blocks",
+    "icon": "testimonial",
+    "description": "A Testimonial Block ",
+    "supports": {
+        "align": ["full", "wide"]
+    },
+    "attributes": { 
+        "title": {
+              "type": "string",
+              "source": "html",
+              "selector": "p"
+          },       
+          "heading": {
+              "type": "string",
+              "source": "html",
+              "selector": "h2"
+          },   
+          "repeater": {
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "properties": {
+                "image": { "type": "string", "default": "" },
+                "title": { "type": "string", "default": "" },
+                "subtitle": { "type": "string", "default": "" },
+                "description": { "type": "string", "default": "" }
+                }
+            }
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css"
+}
