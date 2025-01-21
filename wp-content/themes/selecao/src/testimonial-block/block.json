@@ -1,11 +1,11 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
-    "name": "custom-blocks/services-block",
-    "title": "Services Block",
+    "name": "custom-blocks/testimonial-block",
+    "title": "Testimonial Block",
     "category": "custom-blocks",
-    "icon": "align-full-width",
-    "description": "A Services Block ",
+    "icon": "testimonial",
+    "description": "A Testimonial Block ",
     "supports": {
         "align": ["full", "wide"]
     },
@@ -28,6 +28,7 @@
                 "properties": {
                 "image": { "type": "string", "default": "" },
                 "title": { "type": "string", "default": "" },
+                "subtitle": { "type": "string", "default": "" },
                 "description": { "type": "string", "default": "" }
                 }
             }

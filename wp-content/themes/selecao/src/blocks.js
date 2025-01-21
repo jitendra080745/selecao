@@ -13,4 +13,5 @@ import './src/about-us-block/index.js';
 import './src/full-width-cta-block/index.js';
 import './src/hero-home-block/index.js';
 import './src/services-block/index.js';
+import './src/testimonial-bock/index.js';
 import './src/accordion-block/index.js';
