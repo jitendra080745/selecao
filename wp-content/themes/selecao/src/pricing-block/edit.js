@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, URLInput, RichText, MediaUploadCheck, MediaUpload } from '@wordpress/block-editor';
-import { Button, PanelBody, PanelRow, TextControl } from '@wordpress/components';
+import { Button, PanelBody, PanelRow, TextControl, CheckboxControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import './editor.scss';
 
@@ -11,7 +11,7 @@ export default function Edit({ attributes, setAttributes }) {
     const onChangeHeading = (newHeading) => setAttributes({ heading: newHeading });
 
     const addRepeaterItem = () => {
-        const newRepeater = [...repeater, { image: '', title: '', description: '', subtitles: [] }];
+        const newRepeater = [...repeater, { image: '', eyebrow:'', title: '', description: '', subtitles: [] }];
         setAttributes({ repeater: newRepeater });
     };
 
@@ -28,13 +28,13 @@ export default function Edit({ attributes, setAttributes }) {
 
     const addRepeaterSubTitle = (index) => {
         const newRepeater = [...repeater];
-        newRepeater[index].subtitles.push('');
+        newRepeater[index].subtitles.push({ text: '', checked: false });
         setAttributes({ repeater: newRepeater });
     };
 
-    const updateRepeaterSubTitle = (index, subIndex, value) => {
+    const updateRepeaterSubTitle = (index, subIndex, field, value) => {
         const newRepeater = [...repeater];
-        newRepeater[index].subtitles[subIndex] = value;
+        newRepeater[index].subtitles[subIndex][field] = value;
         setAttributes({ repeater: newRepeater });
     };
 
@@ -86,9 +86,14 @@ export default function Edit({ attributes, setAttributes }) {
                                                 <div>
                                                     <h6>{__('SubTitle', 'pricing-block')}</h6>
                                                     <TextControl
-                                                        value={subtitle}
-                                                        onChange={(value) => updateRepeaterSubTitle(index, subIndex, value)}
+                                                        value={subtitle.text}
+                                                        onChange={(value) => updateRepeaterSubTitle(index, subIndex, 'text', value)}
                                                         placeholder={__('Enter subtitle...', 'pricing-block')}
+                                                    />
+                                                    <CheckboxControl
+                                                        label={__('Checkbox', 'pricing-block')}
+                                                        checked={subtitle.checked}
+                                                        onChange={(checked) => updateRepeaterSubTitle(index, subIndex, 'checked', checked)}
                                                     />
                                                     <Button
                                                         onClick={() => removeRepeaterSubTitle(index, subIndex)}
@@ -129,7 +134,12 @@ export default function Edit({ attributes, setAttributes }) {
                                         onChange={(value) => updateRepeaterItem(index, 'month', value)}
                                         placeholder={__('Enter Month...', 'pricing-block')}
                                     />
-
+                                    <h6>{__('Eyebrow', 'pricing-block')}</h6>
+                                    <TextControl
+                                        value={item.eyebrow}
+                                        onChange={(value) => updateRepeaterItem(index, 'eyebrow', value)}
+                                        placeholder={__('Enter text...', 'pricing-block')}
+                                    />
                                     <Button
                                         onClick={() => removeRepeaterItem(index)}
                                         isDestructive

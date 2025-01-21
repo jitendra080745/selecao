@@ -31,6 +31,7 @@
                 "month": { "type": "string", "default": "" },
                 "buttonText": { "type": "string", "default": "Click Here"  },
                 "buttonUrl": {  "type": "string", "default": "#" },
+                "eyebrow": { "type": "string", "default": "" },
                 "repeater": {
                         "type": "array",
                         "default": [],
