@@ -4,7 +4,7 @@
   "name": "custom-blocks/services-block",
   "title": "Services Block",
   "category": "custom-blocks",
-  "icon": "images-alt2",
+  "icon": "align-full-width",
   "description": "A Services Block ",
   "supports": {
     "align": [

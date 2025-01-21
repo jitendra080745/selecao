@@ -1,7 +1,7 @@
 import { useBlockProps} from '@wordpress/block-editor';
 
     export default function save({ attributes }) {
-        const {title,heading, buttonUrl, buttonText, repeater} = attributes;
+        const {title,heading, repeater} = attributes;
     return (
         <div {...useBlockProps.save()}>
             <section id="services" class="services section">

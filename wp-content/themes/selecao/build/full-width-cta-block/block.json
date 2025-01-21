@@ -4,7 +4,7 @@
   "name": "custom-blocks/full-width-cat-block",
   "title": "Full Width Cat Block",
   "category": "custom-blocks",
-  "icon": "editor-unlink",
+  "icon": "align-full-width",
   "description": "A custom block with title, heading, description, link button, and a repeater field.",
   "supports": {
     "align": [

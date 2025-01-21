@@ -2,16 +2,13 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps ,URLInput, RichText , MediaUpload} from '@wordpress/block-editor';
 import { Button, PanelBody, PanelRow, TextControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-
 import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
-    const {title, heading, repeater, } = attributes;
+    const {title, heading, repeater } = attributes;
     const onChangeTitle = (newTitle) => setAttributes({ title: newTitle });
     const onChangeHeading = (newHeading) => setAttributes({ heading: newHeading });
 
-
-
-    const addRepeaterItem = () => {
+   const addRepeaterItem = () => {
         const newRepeater = [...repeater, { image: '', title: '', description: '' }];
         setAttributes({ repeater: newRepeater });
     };
@@ -33,16 +30,15 @@ export default function Edit({ attributes, setAttributes }) {
                       {isCallupOpen && (
             <div className="cta-fields">
                 <h6>{__('Title', 'services-block')}</h6>
-
                 <TextControl
                     tagName="p"
                     value={title}
                     onChange={onChangeTitle}
                     placeholder={__('Add Title', 'services-block')}
                 />
+                <h6>{__('Heading', 'services-block')}</h6>
                 <TextControl
                     tagName="h2"
-                    label={__('Heading', 'services-block')}
                     value={heading}
                     onChange={onChangeHeading}
                     placeholder={__('Add Heading', 'services-block')}
