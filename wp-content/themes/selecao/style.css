@@ -95,3 +95,23 @@ body.logged-in header{
 .main{
 	padding-top: 58px;
 }
+
+#contact .btn-primary{	
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+	background-color: #f17c27;
+	color: #fff;
+	border: none;
+}
+#contact .form-control{
+	box-shadow: unset;
+}
+#contact .form-control:focus{
+	border: 1px solid #f17c27;
+}

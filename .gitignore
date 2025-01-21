@@ -26,6 +26,8 @@
 /xmlrpc.php
 /wp-admin
 /wp-includes
+/wp-content/uploads
+/wp-content/plugins
 /wp-content/index.php
 /wp-content/themes/twentytwenty
 /wp-content/themes/twentytwentyone

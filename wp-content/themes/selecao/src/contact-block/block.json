@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "custom-blocks/contact-block",
+  "title": "Contact Block",
+  "category": "custom-blocks",
+  "icon": "edit",
+  "description": "Contact Block",
+  "supports": {
+    "align": ["full", "wide"]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    } ,
+    "shortcode": {
+      "type": "string",
+      "default": ""
+    } ,
+    "accordion": {
+      "type": "array",
+      "default": [{ "title": "" }],
+      "items": {
+        "type": "object",
+        "properties": {          
+          "question": { "type": "string", "default": "" }   ,       
+          "answer": { "type": "string", "default": "" }    ,      
+          "image": { "type": "string", "default": "" }          
+        }
+      }
+    }   
+  },
+  "textdomain": "custom-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.scss",
+  "style": "file:./style.scss"
+}

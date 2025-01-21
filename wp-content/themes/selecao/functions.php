@@ -147,7 +147,7 @@ function selecao_scripts() {
 	
 	wp_enqueue_style( 'selecao-main.css',get_template_directory_uri() . '/html/assets/css/main.css', array(), _S_VERSION );
 	
-	wp_enqueue_script( 'selecao-bundle', get_template_directory_uri() . 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );			
+	wp_enqueue_script( 'selecao-bundle', get_template_directory_uri() . '/html/assets/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );			
 	wp_enqueue_script( 'selecao-swiper', get_template_directory_uri() . '/html/assets/vendor/swiper/swiper-bundle.min.js', array(), _S_VERSION, true );
 
 
