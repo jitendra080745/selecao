@@ -20,3 +20,4 @@ import './src/contact-block/index.js';
 import './src/teams-block/index.js';
 import './src/post-list-block/index.js';
 import './src/commun-hero-block/index.js';
+import './src/features-block/index.js';

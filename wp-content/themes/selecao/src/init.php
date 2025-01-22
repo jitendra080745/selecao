@@ -29,6 +29,7 @@ function create_multiple_blocks_plugin_block_init()
     register_block_type(get_template_directory() . '/build/teams-block/');
     register_block_type(get_template_directory() . '/build/post-list-block/');
     register_block_type(get_template_directory() . '/build/commun-hero-block/');
+    register_block_type(get_template_directory() . '/build/features-block/');
     
 }
 add_action('init', 'create_multiple_blocks_plugin_block_init');
@@ -230,3 +231,13 @@ function register_commun_hero_block() {
     );
 }
 add_action('init', 'register_commun_hero_block');
+
+function register_features_block() {
+    register_block_type(
+        get_template_directory() . '/src/features-block',
+        array(
+            'render_callback' => 'render_features_block',
+        )
+    );
+}
+add_action('init', 'register_features_block');
