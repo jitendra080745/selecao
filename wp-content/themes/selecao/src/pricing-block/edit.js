@@ -72,15 +72,15 @@ export default function Edit({ attributes, setAttributes }) {
                             <PanelRow key={index}>
                                 <div>
                                     <h6>{__('Title', 'pricing-block')}</h6>
+                                    <CheckboxControl
+                                        label={__('Featured', 'pricing-block')}
+                                        checked={item.checked}
+                                        onChange={(checked) => updateRepeaterItem(index, 'checked', checked)}
+                                    />
                                     <TextControl
                                         value={item.title}
                                         onChange={(value) => updateRepeaterItem(index, 'title', value)}
                                         placeholder={__('Enter item title...', 'pricing-block')}
-                                    />
-                                      <CheckboxControl
-                                        label={__('Featured', 'pricing-block')}
-                                        checked={item.checked}
-                                        onChange={(checked) => updateRepeaterItem(index, 'checked', checked)}
                                     />
                                     <h6>{__('SubTitles', 'pricing-block')}</h6>
                                     <PanelBody initialOpen={true}>
@@ -94,7 +94,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                         placeholder={__('Enter subtitle...', 'pricing-block')}
                                                     />
                                                     <CheckboxControl
-                                                        label={__('Checkbox', 'pricing-block')}
+                                                        label={__('Line Through Checkbox', 'pricing-block')}
                                                         checked={subtitle.checked}
                                                         onChange={(checked) => updateRepeaterSubTitle(index, subIndex, 'checked', checked)}
                                                     />
@@ -112,7 +112,6 @@ export default function Edit({ attributes, setAttributes }) {
                                             {__('Add SubTitle', 'pricing-block')}
                                         </Button>
                                     </PanelBody>
-
                                     <h6>{__('Number', 'pricing-block')}</h6>
                                     <TextControl
                                         value={item.number}
@@ -143,7 +142,6 @@ export default function Edit({ attributes, setAttributes }) {
                                         onChange={(value) => updateRepeaterItem(index, 'buttonUrl', value)}
                                         placeholder={__('Enter button URL...', 'pricing-block')}
                                     />
-                                    
                                     <Button
                                         onClick={() => removeRepeaterItem(index)}
                                         isDestructive
