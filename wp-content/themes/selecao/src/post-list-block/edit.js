@@ -1,12 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
-import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { title, heading, currentPage, totalPages } = attributes;
+    const { currentPage, totalPages } = attributes;
     const postsPerPage = 5; 
 
     // Fetch all posts
@@ -48,26 +47,17 @@ export default function Edit({ attributes, setAttributes }) {
 
     return (
         <div {...useBlockProps()}>
-           
-            <h2 onClick={toggleCollapse} className={`block-title ${isCollapsed ? '' : 'show'}`}>{__('Post List Block', 'post-list-block')}
-            <span></span>
+            <h2 
+                onClick={toggleCollapse} 
+                className={`block-title ${isCollapsed ? '' : 'show'}`}
+            >
+                {__('Post List Block', 'post-list-block')}
+                <span></span>
             </h2>
             
-            <div className={`block-wrap ${isCollapsed ? 'collapsed' : 'expanded'}`}>
+            <div className={`block-wrap ${isCollapsed ? 'collapsed' : 'show'}`}>
                 {!isCollapsed && (
-                    <>
-                        {/* Input fields */}
-                        <h6>{__('Title', 'post-list-block')}</h6>
-                        <TextControl
-                            value={title}
-                            onChange={(newTitle) => setAttributes({ title: newTitle })}
-                        />
-                        <h6>{__('Heading', 'post-list-block')}</h6>
-                        <TextControl
-                            value={heading}
-                            onChange={(newHeading) => setAttributes({ heading: newHeading })}
-                        />
-
+                    <>                
                         {/* Post listing */}
                         <h6>{__('Post List', 'post-list-block')}</h6>
                         <div className="post-listing">

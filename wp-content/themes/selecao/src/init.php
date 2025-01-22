@@ -27,8 +27,9 @@ function create_multiple_blocks_plugin_block_init()
     register_block_type(get_template_directory() . '/build/pricing-block/');
     register_block_type(get_template_directory() . '/build/contact-block/');
     register_block_type(get_template_directory() . '/build/teams-block/');
-    register_block_type(get_template_directory() . '/build/post-list-block/');
+    register_block_type(get_template_directory() . '/build/recent-blog-block/');
     register_block_type(get_template_directory() . '/build/commun-hero-block/');
+    register_block_type(get_template_directory() . '/build/post-list-block/');
     
 }
 add_action('init', 'create_multiple_blocks_plugin_block_init');
@@ -211,15 +212,15 @@ function register_teams_block() {
 }
 add_action('init', 'register_teams_block');
 
-function register_post_list_block() {
+function register_recent_blog_block() {
     register_block_type(
-        get_template_directory() . '/src/post-list-block',
+        get_template_directory() . '/src/recent-blog-block',
         array(
-            'render_callback' => 'render_post_list_block',
+            'render_callback' => 'render_recent_blog_block',
         )
     );
 }
-add_action('init', 'register_post_list_block');
+add_action('init', 'register_recent_blog_block');
 
 function register_commun_hero_block() {
     register_block_type(
@@ -230,3 +231,13 @@ function register_commun_hero_block() {
     );
 }
 add_action('init', 'register_commun_hero_block');
+
+function register_post_list_lock() {
+    register_block_type(
+        get_template_directory() . '/src/post-list-block',
+        array(
+            'render_callback' => 'render_post_list_lock',
+        )
+    );
+}
+add_action('init', 'register_post_list_lock');

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "custom-blocks/recent-blog-block",
+  "title": "Recent Blog Block",
+  "category": "custom-blocks",
+  "icon": "image-rotate-left",
+  "description": "Recent Blog Block",
+  "supports": {
+    "align": [
+      "full",
+      "wide"
+    ]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "posts": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "textdomain": "custom-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.scss",
+  "style": "file:./style.scss"
+}
