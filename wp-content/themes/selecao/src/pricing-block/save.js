@@ -2,7 +2,6 @@ import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
     const { title, heading, repeater } = attributes;
-
     return (
         <div {...useBlockProps.save()}>
             <section id="pricing" className="pricing section">
@@ -14,10 +13,10 @@ export default function save({ attributes }) {
                     <div className="row gy-3">
                         {repeater.length > 0 && repeater.map((item, index) => (
                             <div className="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="100" key={index}>
-                                <div className="pricing-item">
-                                    {item.eyebrow && <span class="advanced">{item.eyebrow}</span>}
+                                <div className={`pricing-item ${item.checked ? 'featured' : ''}`}>
+                                    {item.eyebrow && <span className="advanced">{item.eyebrow}</span>}
                                     {item.title && <h3>{item.title}</h3>}
-                                    <h4><sup>$</sup>{item.number}{item.month && <span>{item.month}</span>}</h4>
+                                    <h4><sup>$</sup>{item.number}{item.month && <span>/ {item.month}</span>}</h4>
                                     <ul>
                                         {item.subtitles && item.subtitles.length > 0 && item.subtitles.map((subtitle, subIndex) => (
                                             <li key={subIndex} data-aos="fade-up" data-aos-delay="100" className={subtitle.checked ? 'na' : ''}>
@@ -39,6 +38,7 @@ export default function save({ attributes }) {
         </div>
     );
 }
+
 
 
 

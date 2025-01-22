@@ -67,7 +67,6 @@ export default function Edit({ attributes, setAttributes }) {
                         onChange={onChangeHeading}
                         placeholder={__('Add Heading', 'pricing-block')}
                     />
-
                     <PanelBody title={__('Repeater Items', 'pricing-block')} initialOpen={true}>
                         {repeater.map((item, index) => (
                             <PanelRow key={index}>
@@ -78,7 +77,11 @@ export default function Edit({ attributes, setAttributes }) {
                                         onChange={(value) => updateRepeaterItem(index, 'title', value)}
                                         placeholder={__('Enter item title...', 'pricing-block')}
                                     />
-
+                                      <CheckboxControl
+                                        label={__('Featured', 'pricing-block')}
+                                        checked={item.checked}
+                                        onChange={(checked) => updateRepeaterItem(index, 'checked', checked)}
+                                    />
                                     <h6>{__('SubTitles', 'pricing-block')}</h6>
                                     <PanelBody initialOpen={true}>
                                         {item.subtitles.map((subtitle, subIndex) => (
@@ -110,18 +113,6 @@ export default function Edit({ attributes, setAttributes }) {
                                         </Button>
                                     </PanelBody>
 
-                                    <h6>{__('Button Text', 'pricing-block')}</h6>
-                                    <TextControl
-                                        value={item.buttonText}
-                                        onChange={(value) => updateRepeaterItem(index, 'buttonText', value)}
-                                        placeholder={__('Enter button text...', 'pricing-block')}
-                                    />
-                                    <h6>{__('Button URL', 'pricing-block')}</h6>
-                                    <TextControl
-                                        value={item.buttonUrl}
-                                        onChange={(value) => updateRepeaterItem(index, 'buttonUrl', value)}
-                                        placeholder={__('Enter button URL...', 'pricing-block')}
-                                    />
                                     <h6>{__('Number', 'pricing-block')}</h6>
                                     <TextControl
                                         value={item.number}
@@ -140,6 +131,19 @@ export default function Edit({ attributes, setAttributes }) {
                                         onChange={(value) => updateRepeaterItem(index, 'eyebrow', value)}
                                         placeholder={__('Enter text...', 'pricing-block')}
                                     />
+                                    <h6>{__('Button Text', 'pricing-block')}</h6>
+                                    <TextControl
+                                        value={item.buttonText}
+                                        onChange={(value) => updateRepeaterItem(index, 'buttonText', value)}
+                                        placeholder={__('Enter button text...', 'pricing-block')}
+                                    />
+                                    <h6>{__('Button URL', 'pricing-block')}</h6>
+                                    <TextControl
+                                        value={item.buttonUrl}
+                                        onChange={(value) => updateRepeaterItem(index, 'buttonUrl', value)}
+                                        placeholder={__('Enter button URL...', 'pricing-block')}
+                                    />
+                                    
                                     <Button
                                         onClick={() => removeRepeaterItem(index)}
                                         isDestructive
