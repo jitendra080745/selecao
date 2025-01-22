@@ -50,16 +50,7 @@ get_header();
                 </div><!-- End meta top -->
 
                 <div class="content">
-				<?php
-		$content = get_the_content();
-		$block_name = 'cccc'; // Aap apne block ka naam yahan dalenge
-
-		if ( strpos( $content, $block_name ) !== false ) {
-			the_content(); // Agar block ka naam content mein mile, toh content dikhaye
-		} else {
-			echo 'Block not found'; // Agar block nahi mile, toh message dikhaye
-		}
-	?>
+					<?php the_content(); ?>
 
                 </div>
 
