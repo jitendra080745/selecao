@@ -18,6 +18,6 @@ import './src/accordion-block/index.js';
 import './src/pricing-block/index.js';
 import './src/contact-block/index.js';
 import './src/teams-block/index.js';
-import './src/recent-blog-block/index.js';
-import './src/commun-hero-block/index.js';
 import './src/post-list-block/index.js';
+import './src/commun-hero-block/index.js';
+import './src/features-block/index.js';
