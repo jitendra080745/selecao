@@ -48,12 +48,9 @@ export default function Edit({ attributes, setAttributes }) {
 
     return (
         <div {...useBlockProps()}>
-            <h2 
-                onClick={toggleCollapse} 
-                className={`block-title ${isCollapsed ? '' : 'expanded'}`}
-            >
-                {__('Post List Block', 'post-list-block')}
-                <span className="toggle-icon"></span>
+           
+            <h2 onClick={toggleCollapse} className={`block-title ${isCollapsed ? '' : 'show'}`}>{__('Post List Block', 'post-list-block')}
+            <span></span>
             </h2>
             
             <div className={`block-wrap ${isCollapsed ? 'collapsed' : 'expanded'}`}>
