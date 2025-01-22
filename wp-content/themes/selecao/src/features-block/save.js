@@ -16,7 +16,7 @@ export default function save({ attributes }) {
                             repeater.map((item, index) => (
                                 <li className="nav-item col-3" role="presentation" key={index}>
                                     <a
-                                        className={`nav-link ${index === 1 ? "active show" : ""}`}
+                                        className={`nav-link ${index === 0 ? "active show" : ""}`}
                                         data-bs-toggle="tab"
                                         data-bs-target={`#features-tab-${index}`}
                                         aria-selected={index === 1 ? "true" : "false"}
