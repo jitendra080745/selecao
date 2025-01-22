@@ -30,6 +30,7 @@ function create_multiple_blocks_plugin_block_init()
     register_block_type(get_template_directory() . '/build/recent-blog-block/');
     register_block_type(get_template_directory() . '/build/commun-hero-block/');
     register_block_type(get_template_directory() . '/build/post-list-block/');
+    register_block_type(get_template_directory() . '/build/features-block/');
     
 }
 add_action('init', 'create_multiple_blocks_plugin_block_init');
