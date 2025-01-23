@@ -14,10 +14,12 @@ import { useBlockProps} from '@wordpress/block-editor';
                     <div class="swiper init-swiper">
                         <div class="swiper-wrapper">
                             {repeater.length > 0 && repeater.map((item, index) => (
-                                <div class="swiper-slide">
+                                <div  className={`swiper-slide ${index === 1 ? 'swiper-slide-active' : index === 0 ? 'swiper-slide-prev' : 'swiper-slide-next'}`}
+                                key={index} >
+                                        
+
                                     <div class="testimonial-item">
                                             {item.image && <img src={item.image} alt="" data-aos="fade-in"/>}
-                                            
                                             {item.title && <h3>{item.title}</h3>}
                                             {item.subtitle && <h4>{item.subtitle}</h4>}
                                         <div class="stars">
