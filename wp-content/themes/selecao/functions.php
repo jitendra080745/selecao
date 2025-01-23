@@ -143,10 +143,9 @@ function selecao_scripts() {
 
 	wp_enqueue_style( 'selecao-bootstrap',get_template_directory_uri() . '/html/assets/vendor/bootstrap/css/bootstrap.min.css', array(), _S_VERSION );
 	wp_enqueue_style( 'selecao-bootstrap-icons',get_template_directory_uri() . '/html/assets/vendor/bootstrap-icons/bootstrap-icons.css', array(), _S_VERSION );
-	
-	
+	wp_enqueue_style( 'selecao-swiper-bundle.min.css',get_template_directory_uri() . '/html/assets/vendor/swiper/swiper-bundle.min.css', array(), _S_VERSION );
+
 	wp_enqueue_style( 'selecao-main.css',get_template_directory_uri() . '/html/assets/css/main.css', array(), _S_VERSION );
-	
 	wp_enqueue_script( 'selecao-bundle', get_template_directory_uri() . '/html/assets/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );			
 	wp_enqueue_script( 'selecao-swiper', get_template_directory_uri() . '/html/assets/vendor/swiper/swiper-bundle.min.js', array(), _S_VERSION, true );
 
