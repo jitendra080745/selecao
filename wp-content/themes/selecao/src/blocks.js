@@ -21,3 +21,4 @@ import './src/teams-block/index.js';
 import './src/post-list-block/index.js';
 import './src/commun-hero-block/index.js';
 import './src/features-block/index.js';
+import './src/post-content-block/index.js';

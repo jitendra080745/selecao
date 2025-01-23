@@ -31,6 +31,7 @@ function create_multiple_blocks_plugin_block_init()
     register_block_type(get_template_directory() . '/build/commun-hero-block/');
     register_block_type(get_template_directory() . '/build/post-list-block/');
     register_block_type(get_template_directory() . '/build/features-block/');
+    register_block_type(get_template_directory() . '/build/post-content-block/');
     
 }
 add_action('init', 'create_multiple_blocks_plugin_block_init');
@@ -242,3 +243,13 @@ function register_post_list_lock() {
     );
 }
 add_action('init', 'register_post_list_lock');
+
+function register_post_content_block() {
+    register_block_type(
+        get_template_directory() . '/src/post-content-block',
+        array(
+            'render_callback' => 'render_post_content_block',
+        )
+    );
+}
+add_action('init', 'register_post_content_block');
