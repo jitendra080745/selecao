@@ -115,3 +115,32 @@ body.logged-in header{
 #contact .form-control:focus{
 	border: 1px solid #f17c27;
 }
+.form-submit{
+	text-align: center;
+}
+.comment-form .submit{
+	border-radius: 4px;
+    padding: 10px 20px;
+    border: 0;
+    background-color:#f17c27 ;
+    color: #fff;
+}
+#commentform label{
+	display: block;
+}
+#commentform textarea,
+#commentform input{
+	width: 100%;
+}
+
+#commentform textarea:focus-visible,
+#commentform input:focus-visible{
+	outline: none;
+}
+
+.form-submit input,
+.comment-form-cookies-consent label,
+#wp-comment-cookies-consent{
+	width:fit-content !important;
+	display: inline !important;
+}
