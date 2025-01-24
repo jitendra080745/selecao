@@ -1,45 +1,54 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
-import { TextControl } from '@wordpress/components';
+import { TextareaControl, Button } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 export default function Edit({ attributes, setAttributes }) {
     const { title } = attributes;
 
-    // Handlers for updating attributes
+    // State for preview toggle
+    const [isPreview, setIsPreview] = useState(false);
+
+    // Handler for updating the title
     const onChangeTitle = (newTitle) => setAttributes({ title: newTitle });
-
-
-    // Manage collapse state for block-wrap
-    const [isCollapsed, setIsCollapsed] = useState(true);
-
-    // Toggle collapse state
-    const toggleCollapse = () => setIsCollapsed(!isCollapsed);
 
     return (
         <div {...useBlockProps()}>
-            {/* Block Title */}
-            <h2
-                onClick={toggleCollapse}
-                className={`block-title ${isCollapsed ? '' : 'show'}`}
-            >
-                {__('Post Content Block', 'post-content-block')}
-                <span></span>
-            </h2>
+            {/* Block Header */}
+            <h2>{__('Post Content Block', 'post-content-block')}</h2>
 
-            {/* Block Content */}
-            <div className={`block-wrap ${isCollapsed ? 'collapsed' : ''}`}>
-                {!isCollapsed && (
-                    <>
-                        {/* Title */}
-                        <h6>{__('Title', 'post-content-block')}</h6>
-                        <TextControl
-                            value={title}
-                            onChange={onChangeTitle}
-                            placeholder={__('Enter title...', 'post-content-block')}
-                        />
-                     
-                    </>
+            {/* HTML/Preview Toggle */}
+            <div className="toggle-buttons">
+                <Button
+                    isPrimary={!isPreview}
+                    onClick={() => setIsPreview(false)}
+                >
+                    {__('HTML', 'post-content-block')}
+                </Button>
+                <Button
+                    isPrimary={isPreview}
+                    onClick={() => setIsPreview(true)}
+                >
+                    {__('Preview', 'post-content-block')}
+                </Button>
+            </div>
+
+            {/* Content Section */}
+            <div className="content-section">
+                {!isPreview ? (
+                    // HTML Input Mode
+                    <TextareaControl
+                        value={title}
+                        onChange={onChangeTitle}
+                        placeholder={__('Write your HTML here...', 'post-content-block')}
+                        rows={4}
+                    />
+                ) : (
+                    // Preview Mode
+                    <div
+                        className="preview-output"
+                        dangerouslySetInnerHTML={{ __html: title }}
+                    ></div>
                 )}
             </div>
         </div>
