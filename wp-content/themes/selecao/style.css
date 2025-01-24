@@ -125,6 +125,10 @@ body.logged-in header{
     background-color:#f17c27 ;
     color: #fff;
 }
+.comment-form .submit:hover{
+    background-color:#ff7613e8 ;
+
+}
 #commentform label{
 	display: block;
 }
@@ -132,7 +136,9 @@ body.logged-in header{
 #commentform input{
 	width: 100%;
 }
-
+.comments-title{
+	display: none;
+}
 #commentform textarea:focus-visible,
 #commentform input:focus-visible{
 	outline: none;
@@ -143,4 +149,58 @@ body.logged-in header{
 #wp-comment-cookies-consent{
 	width:fit-content !important;
 	display: inline !important;
+}
+.says{
+	display: none;
+}
+
+.comment-reply-link,
+.comment-author a{
+	font-weight: bold !important;
+    color: #444444 !important;
+    transition: 0.3s !important;
+	line-height: 19px;
+	font-size: 17px;
+	text-transform: capitalize;
+
+}
+.comment-reply-link{
+	color: #8f8f8f !important;
+}
+.comment-reply-link:hover,
+.comment-author a:hover{
+	color: #ef6603 !important;
+}
+
+time{
+	display: block;
+    font-size: 14px;    
+	margin-bottom: 5px;
+	color: #8f8f8f;
+}
+.comment-list{
+	list-style: none;
+	padding: 0;
+}
+.comment-content p{
+	margin-bottom: 8px;
+}
+.comment-body{
+	padding-left: 70px;
+	position: relative;
+}
+.avatar{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	left: 0;
+}
+.comment:not(:last-of-type) .reply{
+	margin-bottom: 20px;
+}
+.children{
+	list-style: none;
+}
+#primary{
+	margin-top: 200px;
 }
