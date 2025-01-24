@@ -2,7 +2,7 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
     "name": "custom-blocks/hero-home-block",
-    "title": "Hero Home Block",
+    "title": "Home Hero Block",
     "category": "custom-blocks",
     "icon": "images-alt2",
     "description": "A  Block with a heading, description",
