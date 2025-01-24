@@ -201,6 +201,10 @@ time{
 .children{
 	list-style: none;
 }
-#primary{
-	margin-top: 200px;
+
+.post-img img{
+	width: 100%;
+	height: 500px;
+	object-fit: cover;
+	object-position: top;
 }

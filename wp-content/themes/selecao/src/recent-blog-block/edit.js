@@ -15,7 +15,7 @@ export default function Edit({ attributes, setAttributes }) {
     // Fetch posts using useSelect
     const fetchedPosts = useSelect((select) => {
         const query = {
-            per_page: 5, // Number of posts to fetch
+            per_page: 3, // Number of posts to fetch
             _embed: true,
         };
         return select('core').getEntityRecords('postType', 'post', query);
