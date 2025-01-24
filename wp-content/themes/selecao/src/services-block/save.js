@@ -14,7 +14,8 @@ import { useBlockProps} from '@wordpress/block-editor';
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                                 <div class="service-item  position-relative" key={index}  className="col-md-6"  data-aos="fade-up"  data-aos-delay={`${200 + index * 100}`}>
                                     <div class="icon">
-                                        {item.image && <img src={item.image} alt={item.title} className="icon-image" />}
+                                        {/* {item.image && <img src={item.image} alt={item.title} className="icon-image" />} */}
+                                        <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
                                     </div>
                                     <a href="service-details.html" class="stretched-link">  {item.title && <h3>{item.title}</h3>} </a>
                                     {item.description && <p>{item.description}</p>}
