@@ -9,7 +9,41 @@ export default function save({ attributes }) {
                     {heading && <p>{heading}</p>}
                 </div>
                 <div className="container" data-aos="fade-up" data-aos-delay="100">
-                    <div className="swiper init-swiper">
+                    <div className="swiper testing">
+                        {/* useEffect(() => {
+                            // Check if Swiper is loaded
+                            if (typeof Swiper !== 'undefined') {
+                                // Initialize Swiper only if it's loaded
+                                const swiperConfig = {
+                                    loop: true,
+                                    slidesPerView: 3,
+                                    speed: 600,
+                                    autoplay: {
+                                        delay: 5000
+                                    },
+                                    slidesPerView: 'auto',
+                                    pagination: {
+                                        el: '.swiper-pagination',
+                                        type: 'bullets',
+                                        clickable: true
+                                    },
+                                    breakpoints: {
+                                        320: {
+                                            slidesPerView: 1,
+                                            spaceBetween: 40
+                                        },
+                                        1200: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 10
+                                        }
+                                    }
+                                };
+
+                                // Initialize Swiper instance after the component is mounted
+                                new Swiper('.swiper.testing', swiperConfig);
+                            }
+                        }, [repeater]); // The effect will rerun if repeater items change */}
+
                         <div className="swiper-wrapper">
                             {repeater.length > 0 &&
                                 repeater.map((item, index) => (
