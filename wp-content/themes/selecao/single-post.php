@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main>
   <?php
     $content = get_the_content();
     $blocks = parse_blocks($content);
