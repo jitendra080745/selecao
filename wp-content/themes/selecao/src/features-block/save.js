@@ -52,13 +52,13 @@ export default function save({ attributes }) {
                                             {item.bodydescription && (
                                                 <p className="fst-italic">{item.bodydescription}</p>
                                             )}
-
                                             <ul>
-                                                <li>
-                                                    <i className="bi bi-check2-all"></i>
-                                                    {item.bodylist && <span>{item.bodylist}</span>}
-                                                </li>
-                                            </ul>
+                                                {item.subtitles && item.subtitles.length > 0 && item.subtitles.map((subtitle, subIndex) => (
+                                                    <li key={subIndex} data-aos="fade-up" data-aos-delay="100" ><i className="bi bi-check2-all"></i>
+                                                        {subtitle.text}
+                                                    </li>
+                                                ))}
+                                            </ul>                                           
                                             {item.bodybottomdescription && (
                                                 <p>{item.bodybottomdescription}</p>
                                             )}

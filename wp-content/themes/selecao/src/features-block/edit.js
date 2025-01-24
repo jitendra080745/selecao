@@ -1,14 +1,14 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, MediaUploadCheck, MediaUpload} from '@wordpress/block-editor';
-import { Button, PanelBody, PanelRow, TextControl } from '@wordpress/components';
+import { Button, PanelBody, PanelRow, TextControl, CheckboxControl  } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
-    const {buttonUrl, buttonText, repeater, } = attributes;
+    const {repeater, } = attributes;
 
     const addRepeaterItem = () => {
-        const newRepeater = [...repeater, { image: '',image_1: '', tabtitle: '',bodytitle: '', bodydescription: '',bodylist: '',bodybottomdescription: '' }];
+        const newRepeater = [...repeater, { image: '',image_1: '', tabtitle: '',bodytitle: '', bodydescription: '',bodylist: '',bodybottomdescription: '',subtitles: [] }];
         setAttributes({ repeater: newRepeater });
     };
     const updateRepeaterItem = (index, field, value) => {
@@ -21,6 +21,24 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({ repeater: newRepeater });
     };
     
+    const addRepeaterSubTitle = (index) => {
+        const newRepeater = [...repeater];
+        newRepeater[index].subtitles.push({ text: '', checked: false });
+        setAttributes({ repeater: newRepeater });
+    };
+
+    const updateRepeaterSubTitle = (index, subIndex, field, value) => {
+        const newRepeater = [...repeater];
+        newRepeater[index].subtitles[subIndex][field] = value;
+        setAttributes({ repeater: newRepeater });
+    };
+
+    const removeRepeaterSubTitle = (index, subIndex) => {
+        const newRepeater = [...repeater];
+        newRepeater[index].subtitles = newRepeater[index].subtitles.filter((_, i) => i !== subIndex);
+        setAttributes({ repeater: newRepeater });
+    };
+
     const [isCallupOpen, setCallupOpen] = useState(true);
 
     return (
@@ -78,12 +96,31 @@ export default function Edit({ attributes, setAttributes }) {
                                     onChange={(value) => updateRepeaterItem(index, 'bodydescription', value)}
                                     placeholder={__('Enter Description...', 'features-block')}
                                 />
-                                <h6>{__('Body list', 'features-block')}</h6>
-                                <TextControl
-                                    value={item.bodylist}
-                                    onChange={(value) => updateRepeaterItem(index, 'bodylist', value)}
-                                    placeholder={__('Enter list...', 'features-block')}
-                                />
+                                <h6>{__('SubTitles', 'pricing-block')}</h6>
+                                <PanelBody initialOpen={true}>
+                                    {item.subtitles.map((subtitle, subIndex) => (
+                                        <PanelRow key={subIndex}>
+                                            <div>
+                                                <h6>{__('SubTitle', 'pricing-block')}</h6>
+                                                <TextControl
+                                                    value={subtitle.text}
+                                                    onChange={(value) => updateRepeaterSubTitle(index, subIndex, 'text', value)}
+                                                    placeholder={__('Enter subtitle...', 'pricing-block')}
+                                                />
+                                                <Button
+                                                    onClick={() => removeRepeaterSubTitle(index, subIndex)}
+                                                    isDestructive
+                                                    style={{ marginTop: '10px' }}
+                                                >
+                                                    {__('Remove SubTitle', 'pricing-block')}
+                                                </Button>
+                                            </div>
+                                        </PanelRow>
+                                    ))}
+                                    <Button onClick={() => addRepeaterSubTitle(index)} isPrimary style={{ marginTop: '10px' }}>
+                                        {__('Add SubTitle', 'pricing-block')}
+                                    </Button>
+                                </PanelBody>
                                 <h6>{__('Body Bottom Description', 'features-block')}</h6>
                                 <TextControl
                                     value={item.bodybottomdescription}
