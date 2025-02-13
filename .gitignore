@@ -37,4 +37,5 @@
 /wp-content/plugins/index.php
 /wp-content/plugins/akismet*
 /wp-content/themes/selecao/node_modules/
+/wp-content/themes/selecao/blocks/node_modules/
 /wp-content/themes/selecao/package-lock.json
